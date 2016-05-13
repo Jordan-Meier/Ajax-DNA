@@ -1,0 +1,7 @@
+name = DNA
+description = finds second sequence of nucleotides based on the first
+package = Epicodus Code Review
+core = 7.x
+files[] = DNA.module
+files[] = DNA.test
+dependencies[] = simpletest
