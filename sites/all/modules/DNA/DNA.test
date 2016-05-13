@@ -1,9 +1,9 @@
 <?php
-class DNATestCase extends DrupalUnitTestCase
+class DNAUnitTestCase extends DrupalUnitTestCase
 {
     public static function getInfo() {
         return array(
-            'name' => 'DNA Tests',
+            'name' => 'DNA Unit Tests',
             'description' => 'Test that DNA module successfully produces second set of nucleotides based on the given first set. ',
             'group' => 'Epicodus Code Review Tests',
         );
@@ -34,5 +34,28 @@ class DNATestCase extends DrupalUnitTestCase
         $result = find_DNA($input);
         $expected_output = 'TCAG';
         $this->assertEqual($result, $expected_output, $description);
+    }
+}
+
+class DNATestCase extends DrupalWebTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Functional Tests',
+            'description' => 'Test that DNA module successfully produces second set of nucleotides based on the given first set. ',
+            'group' => 'Epicodus Code Review Tests',
+        );
+    }
+
+    public function setUp() {
+        parent::setUp(array('DNA'));
+    }
+
+    public function testDNACreate() {
+        $edit = array();
+        $edit['input'] = 'TAGCA';
+
+        $this->drupalPost('/DNA', $edit, t('Complete Sequence'));
+        $this->assertText(t('ATCGT'), t('Test passes! Hooray!'));
     }
 }
