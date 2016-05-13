@@ -1,0 +1,38 @@
+<?php
+function DNA_menu() {
+    $items = array();
+    $items['DNA'] = array(
+        'title' => 'Complete Your DNA Sequence',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('DNA_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['DNA_success'] = array(
+        'title' => 'Success',
+        'page callback' => 'DNA_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function find_DNA($input){
+
+    $split_input = str_split($input);
+    $output = "";
+
+    foreach($split_input as $nucleotide) {
+        if($nucleotide === 'A') {
+            $output .= 'T';
+        } elseif ($nucleotide === 'T') {
+            $output .= 'A';
+        } elseif ($nucleotide === 'C') {
+            $output .= 'G';
+        } else {
+            $output .= 'C';
+        }
+    }
+
+    return $output;
+}
