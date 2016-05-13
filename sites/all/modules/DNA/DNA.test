@@ -2,10 +2,25 @@
 class DNATestCase extends DrupalUnitTestCase
 {
     public static function getInfo() {
-
+        return array(
+            'name' => 'DNA Tests',
+            'description' => 'Test that DNA module successfully produces second set of nucleotides based on the given first set. ',
+            'group' => 'Epicodus Code Review Tests',
+        );
     }
 
     function testDNA() {
-        
+        //English description
+        $description = 'The opposite of a single nucleotide of DNA is successfully translated';
+
+        //Arrange
+        $input = 'A';
+
+        //Act
+        $result = find_DNA($input);
+
+        //Assert
+        $expected_output = 'T';
+        $this->assertEqual($result, $expected_output, $decription);
     }
 }
