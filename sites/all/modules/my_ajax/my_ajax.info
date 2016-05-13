@@ -1,0 +1,5 @@
+name = Custom Ajax Article Loader
+description = Display Articles with Ajax.
+package = Epicodus Code Review
+core = 7.x
+files[] = my_ajax.module
