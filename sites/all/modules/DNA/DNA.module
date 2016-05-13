@@ -56,5 +56,6 @@
         $input = $form_state['values']['input'];
         $result = find_DNA($input);
         $_SESSION['helix2'] = $result;
+        $_SESSION['helix1'] = $input;
         $form_state['redirect'] = 'DNA_success';
     }
