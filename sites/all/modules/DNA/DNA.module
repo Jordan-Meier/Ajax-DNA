@@ -52,4 +52,9 @@
         return $output;
     }
 
-    
+    function DNA_form_submit($form, &$form_state) {
+        $input = $form_state['values']['input'];
+        $result = find_DNA($input);
+        $_SESSION['helix2'] = $result;
+        $form_state['redirect'] = 'DNA_success';
+    }
