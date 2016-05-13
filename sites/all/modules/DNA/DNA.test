@@ -28,5 +28,11 @@ class DNATestCase extends DrupalUnitTestCase
         $result = find_DNA($input);
         $expected_output = 'TC';
         $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'The opposite of several nucleotides of DNA are successfully translated';
+        $input = 'AGTC';
+        $result = find_DNA($input);
+        $expected_output = 'TCAG';
+        $this->assertEqual($result, $expected_output, $description);
     }
 }
