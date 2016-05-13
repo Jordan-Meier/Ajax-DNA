@@ -23,12 +23,20 @@
             '#type' => 'textfield',
             '#description' => t( "Please only enter the letters 'A, T, C or G'."),
             '#required' => TRUE,
+            '#element_validate' => array('element_validate_sequence'),
         );
         $form['submit'] =array(
             '#type' => 'submit',
             '#value' => 'Complete Sequence',
         );
         return $form;
+    }
+
+    function element_validate_sequence($element) {
+        $input_sequence = $element['#value'];
+        if (!($input_sequence == 'A' || $input_sequence == 'T' ||  $input_sequence == 'C' ||  $input_sequence == 'G')) {
+            form_error($element, t("All letters must be capitalized and the only letters allowed are 'A, T, C or G'."));
+        }
     }
 
 
@@ -58,4 +66,10 @@
         $_SESSION['helix2'] = $result;
         $_SESSION['helix1'] = $input;
         $form_state['redirect'] = 'DNA_success';
+    }
+
+    function DNA_success() {
+        $helix1 = $_SESSION['helix1'];
+        $helix2 = $_SESSION['helix2'];
+        return '<h4> The first helix of your DNA that you entered was: <strong>' . $helix1 . '</strong>, which means that the second half is: <strong>' . $helix2 . '</strong>!</h4>';
     }
