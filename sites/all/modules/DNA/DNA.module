@@ -33,15 +33,17 @@
     }
 
     function element_validate_sequence($element) {
-        $input_sequence = $element['#value'];
-        if (!($input_sequence == 'A' || $input_sequence == 'T' ||  $input_sequence == 'C' ||  $input_sequence == 'G')) {
-            form_error($element, t("All letters must be capitalized and the only letters allowed are 'A, T, C or G'."));
+        $input_sequence = str_split($element['#value']);
+        $accepted_letters = array('A', 'T', 'C', 'G');
+        foreach($input_sequence as $letter) {
+            if(!in_array($letter, $accepted_letters)) {
+                form_error($element, t("All letters must be capitalized and the only letters allowed are 'A, T, C or G'."));
+            }
         }
     }
 
 
     function find_DNA($input){
-
         $split_input = str_split($input);
         $output = "";
 
