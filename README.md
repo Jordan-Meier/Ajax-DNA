@@ -8,6 +8,8 @@
 
 This week's code review is a website built with Drupal 7 that includes two custom modules. One allows for the use of AJAX in loading articles on the home page. The second is a module which presents a form where the user can enter in one half of their DNA helix. It then generates the other half and prints them both in the browser. Also included are passing unit and functional tests.
 
+![screenshot of the code review site](sites/all/images/screenshot.jpg)
+
 ### Known Bugs
 
 No known bugs at this time.
